@@ -798,9 +798,9 @@
   }, { threshold: 0.3 });
   document.querySelectorAll('.ip-journey-card, .ip-crack, .ip-shift-item').forEach(el => revealObs.observe(el));
 
-  // TODO: point this at the real opt-in endpoint (ESP form action, e.g. ConvertKit/Mailchimp/Beehiiv,
-  // or a serverless function). Until then submissions are not stored anywhere.
-  const OPTIN_ENDPOINT = '';
+  // Server-side Vercel function — see /api/subscribe.js. It holds the MailerLite
+  // API token; the browser only ever sees this endpoint and its JSON response.
+  const OPTIN_ENDPOINT = '/api/subscribe';
 
   async function handleOptin(formEl, successEl, errorEl){
     formEl.addEventListener('submit', async (ev) => {

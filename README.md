@@ -36,16 +36,19 @@ Plain HTML/CSS/vanilla JS, no build step or framework dependency — same approa
 - **Opt-in forms** (`#heroForm`, `#finalForm`): floating labels, client-side `required` validation. On submit, both forms are wired to the same `handleOptin()` handler.
 - **`prefers-reduced-motion`**: all animations/transitions are disabled for users who request it.
 
-## Opt-in Form — Needs Wiring Before Launch
-The original export used a Claude-preview-only `window.storage` API that does not exist in production. It's been replaced with a real `fetch()`-based submission, gated behind one constant:
+## Opt-in Form — MailerLite Integration
+The original export used a Claude-preview-only `window.storage` API that does not exist in production. It's been replaced with a real `fetch()`-based submission, wired to MailerLite via a Vercel serverless function:
 
 ```js
 // index.html, inside the <script> at the bottom
-const OPTIN_ENDPOINT = '';
+const OPTIN_ENDPOINT = '/api/subscribe';
 ```
 
-- **As shipped**: `OPTIN_ENDPOINT` is empty, so the form shows the success state immediately on submit without sending the data anywhere. This keeps the page fully functional for design review/demo purposes.
-- **Before launch**: set `OPTIN_ENDPOINT` to a real endpoint (an ESP form action — ConvertKit, Mailchimp, Beehiiv — or a serverless function that stores the lead and triggers the delivery email). The handler POSTs `{ firstname, email, ts }` as JSON and shows an inline error state (`.ip-form-error`) if the request fails, re-enabling the submit button so the user can retry.
+- Both forms (`#heroForm`, `#finalForm`) POST `{ firstname, email, ts }` as JSON to `/api/subscribe`.
+- `/api/subscribe.js` is a Vercel serverless function that validates the input, then calls the MailerLite API to create or update the subscriber. The MailerLite API token is never present in `index.html` or any client-side code — it's read server-side only, from the Vercel environment variable `MAILERLITE_API_TOKEN`.
+- Subscribers are added to (or updated in) the `Integrity Pill — Early Access` MailerLite group.
+- The handler shows the existing success state (`.ip-form-success`) only once the endpoint confirms success, and shows the existing inline error state (`.ip-form-error`) if the request fails, re-enabling the submit button so the user can retry.
+- **Still outstanding before launch**: a real production MailerLite round-trip — one live test submission — has not yet been verified.
 
 ## Design Tokens
 - **Background**: `#0a0806` with two radial orange glows (top-right, bottom-left corners).
