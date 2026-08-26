@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Integrity Pill — For The Man Who Already Took The Red Pill</title>
+<meta name="description" content="The Red Pill got you attraction. The Integrity Pill gets you her trust and devotion. Free 30-page book from Jonathan Livingston, Men Built For More.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  html { scroll-behavior: smooth; }
+  body { background: rgb(10,8,6); }
+
+  :root{
+    --bg: rgb(10,8,6);
+    --card-bg: rgba(13,10,8,0.45);
+    --card-bg-solid: rgb(13,11,9);
+    --accent: #e8672d;
+    --accent-hover: #f28a54;
+    --accent-deep: #f04e23;
+    --gold: #d9a441;
+    --blue: #4a7fb8;
+    --red: #d8453d;
+    --text-bright: #f4efe6;
+    --text-body: #d9cebd;
+    --text-dim: #a89c8f;
+    --text-faint: #71685f;
+    --line: rgba(244,239,230,0.12);
+    --line-soft: rgba(244,239,230,0.08);
+    --btn-text: #1c1310;
+    --font-display: 'Anton', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  a{ color: var(--accent); text-decoration:none; }
+  a:hover{ color: var(--accent-hover); }
+  img{ max-width:100%; }
+  :focus-visible{ outline: 2px solid var(--accent-hover); outline-offset: 3px; }
+
+  .ip-progress{ position:fixed; top:0; left:0; height:3px; background: linear-gradient(90deg, var(--accent), var(--gold)); z-index:40; transition: width 0.1s linear; width:0%; }
+
+  /* ---------- sticky mini bar ---------- */
+  .ip-stickybar{
+    position: fixed; top:0; left:0; right:0; z-index:30;
+    padding: 14px 28px;
+    background: rgba(10,8,6,0.88); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-110%); transition: transform 0.35s ease;
+  }
+  .ip-stickybar-inner{ display:flex; align-items:center; justify-content:space-between; }
+  /* Desktop/tablet only: align the sticky bar's content to the same 720px
+     container the rest of the page uses, instead of the viewport edges.
+     Mobile keeps the original full-width padding/flex behavior untouched
+     (outer padding + inner flex together reproduce the exact original layout). */
+  @media (min-width: 701px){
+    .ip-stickybar{ padding:14px 0; }
+    .ip-stickybar-inner{ max-width:720px; margin:0 auto; padding:0 28px; }
+  }
+  .ip-stickybar.show{ transform: translateY(0); }
+  .ip-stickybar .mark{ font-family: var(--font-display); font-size:14px; letter-spacing:0.02em; text-transform:uppercase; color: var(--accent); display:flex; align-items:center; gap:8px; }
+  .ip-btn-mini{
+    font-family: var(--font-display); font-size:13px; letter-spacing:0.02em; text-transform:uppercase;
+    background: var(--accent); color: var(--btn-text); padding:10px 18px; border-radius:8px; text-decoration:none;
+    transition: background 0.2s ease;
+  }
+  .ip-btn-mini:hover{ background: var(--accent-hover); color: var(--btn-text); }
+
+  .ip-page-bg{
+    background:
+      radial-gradient(500px 380px at 100% 0%, rgba(232,103,45,0.07), transparent 75%),
+      radial-gradient(450px 350px at 0% 100%, rgba(232,103,45,0.05), transparent 75%),
+      var(--bg);
+    min-height: 100vh;
+  }
+  .ip-container{ max-width: 720px; margin: 0 auto; padding: 0 28px 120px; font-family: var(--font-body); }
+
+  .ip-header{ display:flex; align-items:center; justify-content:space-between; padding: 26px 0; border-bottom: 1px solid var(--line); }
+  .ip-header img{ height:64px; width:auto; }
+  .ip-header-title{ font-family: var(--font-display); font-size:19px; letter-spacing:0.01em; text-transform:uppercase; color: var(--accent); display:flex; align-items:center; gap:9px; }
+  .ip-wordmark-icon{ flex-shrink:0; display:block; filter: drop-shadow(0 0 6px rgba(232,103,45,0.35)); }
+  .ip-badge{ font-family: var(--font-mono); font-weight:600; font-size:12px; letter-spacing:0.1em; color: var(--accent); border:1px solid rgba(232,103,45,0.4); border-radius:20px; padding:6px 14px; text-transform:uppercase; }
+
+  .ip-eyebrow{ font-family: var(--font-mono); font-weight:600; font-size:14px; letter-spacing:0.18em; color: var(--accent); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-left:5px; }
+
+  .ip-h2{ font-family: var(--font-display); font-size:40px; line-height:1.1; color: var(--text-bright); margin-top:20px; text-wrap: pretty; }
+  .ip-h2-lg{ font-size:52px; }
+  .ip-h2-lg.ip-h2-closing{ font-size: clamp(26px, 6.4vw, 44px); }
+  .ip-h2 .alt{ color: var(--accent); }
+
+  .ip-body{ font-family: var(--font-body); font-weight:500; font-size:17px; line-height:1.75; color: var(--text-body); margin-top:22px; }
+  .ip-transition{ text-align:center; margin: 6px 0 24px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .ip-transition p{ font-family: var(--font-body); font-style:italic; font-weight:600; font-size:16.5px; color: var(--text-bright); margin:0; line-height:1.5; }
+  .ip-body p{ margin: 0 0 14px; }
+  .ip-body p:last-child{ margin-bottom:0; }
+  .ip-body strong{ color: var(--text-bright); font-weight:700; }
+
+  .ip-card{ background: var(--card-bg); border: 1.5px solid rgba(232,103,45,0.6); border-radius:16px; padding:36px; box-shadow: 0 0 24px rgba(232,103,45,0.24); }
+
+  /* ---------- card lift interaction (hover on desktop, press on touch) ----------
+     Uses the standalone `translate` property (not `transform`) so this never collides
+     with the scroll-reveal `transform` transition already used on .ip-journey-card
+     (that one gets its translate/filter transition appended directly on its own rule,
+     since the `transition` shorthand can't be merged across separate rules). */
+  .ip-card,
+  .ip-story-card,
+  .ip-proof-card,
+  .ip-state-cell{
+    transition: translate 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: translate;
+  }
+  .ip-journey-card{ will-change: translate; }
+  @media (hover: hover) and (pointer: fine){
+    .ip-card:hover,
+    .ip-journey-card:hover,
+    .ip-story-card:hover,
+    .ip-proof-card:hover,
+    .ip-state-cell:hover{
+      translate: 0 -3px;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35));
+    }
+  }
+  .ip-card.is-pressed,
+  .ip-journey-card.is-pressed,
+  .ip-story-card.is-pressed,
+  .ip-proof-card.is-pressed,
+  .ip-state-cell.is-pressed{
+    translate: 0 -1.5px;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.3));
+  }
+
+  .ip-btn-fill{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background: var(--accent); color: var(--btn-text);
+    font-family: var(--font-display); font-size:17px; letter-spacing:0.01em;
+    padding: 20px 30px; border-radius:12px; text-decoration:none;
+    border:none; cursor:pointer; width:100%; box-sizing:border-box;
+    transition: background 0.2s ease;
+  }
+  .ip-btn-fill:hover{ background: var(--accent-hover); color: var(--btn-text); }
+  .ip-btn-fill:disabled{ opacity:0.6; cursor:default; }
+
+  /* ---------- hero ---------- */
+  .ip-hero-card{ position:relative; margin-top:32px; border-radius:20px; overflow:hidden; background: rgb(13,9,6); padding-bottom: 26px; }
+  .ip-hero-fx{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .ip-hero-glow{
+    position:absolute; inset:-16%;
+    background:
+      radial-gradient(circle at 72% 23%, rgba(232,103,45,0.22), transparent 15%),
+      radial-gradient(circle at 60% 68%, rgba(123,37,10,0.22), transparent 24%),
+      conic-gradient(from 150deg at 54% 54%, transparent 0deg, rgba(232,103,45,0.16) 52deg, transparent 115deg, rgba(244,239,230,0.06) 168deg, transparent 226deg, rgba(232,103,45,0.12) 300deg, transparent 360deg);
+    filter: blur(16px);
+  }
+  .ip-hero-inner{ position:relative; z-index:1; padding:24px 32px 0; }
+  .ip-hero-headline{ font-family: var(--font-display); font-size:40px; line-height:1.15; margin-top:14px; }
+  .ip-hero-headline span{ font-size: clamp(34px, 8vw, 68px); display:block; }
+  .ip-hero-headline span.ip-line-small{ font-size: clamp(24px, 6.4vw, 44px); }
+
+  .ip-journey-pill{ width:180px; height:28px; display:block; margin-bottom: 16px; }
+
+  .ip-stat-row{ display:grid; grid-template-columns: repeat(3,1fr); margin-top:20px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .ip-stat{ padding:13px 0; text-align:center; border-right:1px solid var(--line); }
+  .ip-stat:last-child{ border-right:none; }
+  .ip-stat-num{ font-family: var(--font-display); font-size:34px; color: var(--text-bright); }
+  .ip-stat-label{ font-family: var(--font-mono); font-size:12px; letter-spacing:0.08em; color: var(--text-dim); margin-top:6px; text-transform:uppercase; }
+
+  /* ---------- form ---------- */
+  .ip-optin{ margin-top:28px; display:flex; flex-direction:column; gap:12px; }
+
+  /* ---------- shared premium field component — used identically by the hero
+     and final CTAs (#heroForm, #finalForm) via the .ip-field/.ip-optin classes,
+     so the two forms can't drift apart. Label sits permanently notched into the
+     border, book-style. Change styling here once; both CTAs update together. */
+  .ip-field{ position:relative; }
+  .ip-field label{
+    position:absolute; left:16px; top:-9px; font-family: var(--font-mono); font-size:13px;
+    letter-spacing:0.08em; text-transform:uppercase; color: var(--text-bright);
+    pointer-events:none; background: var(--card-bg-solid); padding:0 6px;
+  }
+  .ip-field input{
+    width:100%; background: transparent; border:1px solid rgba(244,239,230,0.16); color: var(--text-bright);
+    font-family: var(--font-body); font-size:15px; padding:20px 16px; border-radius:10px; outline:none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  @media (max-width:480px){
+    .ip-field label{ font-size:11.5px; }
+  }
+  .ip-field input:focus{
+    border-color: rgba(224,76,9,0.55);
+    box-shadow: 0 0 0 3px rgba(224,76,9,0.1), 0 0 18px rgba(224,76,9,0.16);
+  }
+  .ip-microcopy{ font-family: var(--font-mono); font-size:11px; letter-spacing:0.06em; color: var(--text-dim); margin-top:14px; text-align:center; }
+
+  /* ---------- cover image ---------- */
+  .ip-cover-img-wrap{ width:225px; margin: 0 auto; perspective: 900px; }
+  .ip-cover-img{
+    width:100%; height:auto; display:block;
+    transform: perspective(900px) rotateY(6deg);
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.55)) drop-shadow(0 0 16px rgba(232,103,45,0.12));
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), filter 0.5s ease;
+  }
+  /* final-CTA cover — mirrors .ip-book-cta's hero layout (stacked on mobile, book
+     left / form right on desktop) with its own larger, more prominent sizing */
+  .ip-closing-cover-wrap{ width:200px; margin: 18px auto 32px; }
+  .ip-closing-cover{
+    width:100%; height:auto; display:block;
+    transform: perspective(900px) rotateY(6deg);
+    filter: drop-shadow(0 14px 26px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(232,103,45,0.12));
+    transition: transform 300ms cubic-bezier(0.22,1,0.36,1), filter 300ms cubic-bezier(0.22,1,0.36,1);
+  }
+  @media (min-width:640px){
+    .ip-book-cta.ip-closing-book-cta{ grid-template-columns: 280px 1fr; gap:48px; }
+    .ip-closing-cover-wrap{ width:100%; max-width:280px; margin:0; }
+  }
+  @media (hover: hover) and (pointer: fine){
+    .ip-closing-cover-wrap:hover .ip-closing-cover{
+      transform: perspective(900px) rotateY(6deg) translateY(-5px) scale(1.015);
+      filter: drop-shadow(0 20px 34px rgba(0,0,0,0.55)) drop-shadow(0 0 16px rgba(232,103,45,0.16));
+    }
+  }
+  .ip-closing-cover-wrap.is-pressed .ip-closing-cover{
+    transform: perspective(900px) rotateY(6deg) translateY(-1.5px);
+    filter: drop-shadow(0 16px 28px rgba(0,0,0,0.5)) drop-shadow(0 0 13px rgba(232,103,45,0.13));
+  }
+
+  /* ---------- closing section: the page's visual crescendo — echoes the hero's
+     glow/grid language in a deep, burnt-orange register instead of reusing it outright ---------- */
+  .ip-closing-section{
+    position:relative; overflow:hidden; border-radius:20px;
+    margin-top:64px;
+    box-shadow: inset 0 0 90px 26px rgba(8,4,2,0.6);
+  }
+  .ip-closing-fx{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .ip-closing-base{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgb(17,9,5) 0%, rgb(30,15,6) 48%, rgb(15,8,5) 100%);
+  }
+  .ip-closing-glow{
+    position:absolute; inset:-12%;
+    background:
+      radial-gradient(circle at 50% 46%, rgba(224,76,9,0.34), transparent 44%),
+      radial-gradient(circle at 50% 72%, rgba(123,37,10,0.3), transparent 56%),
+      radial-gradient(circle at 50% 46%, rgba(244,239,230,0.05), transparent 30%);
+    filter: blur(28px);
+  }
+  .ip-closing-inner{ position:relative; z-index:1; padding:48px 32px 44px; }
+  @media (max-width:480px){
+    .ip-closing-inner{ padding:34px 20px 30px; }
+  }
+  @media (prefers-reduced-motion: reduce){ .ip-closing-cover{ transition: none; } }
+  .ip-cover-img-wrap:hover .ip-cover-img{
+    transform: perspective(900px) rotateY(0deg) scale(1.03) translateY(-4px);
+    filter: drop-shadow(0 26px 46px rgba(0,0,0,0.6)) drop-shadow(0 0 20px rgba(232,103,45,0.18));
+  }
+  @media (prefers-reduced-motion: reduce){ .ip-cover-img{ transition: none; } }
+  .ip-form-success{ display:none; margin-top:20px; text-align:center; border:1px solid var(--accent); padding:20px; border-radius:10px; color: var(--text-bright); font-family: var(--font-mono); font-size:13px; letter-spacing:0.05em; }
+  .ip-form-success.show{ display:block; }
+  .ip-form-error{ display:none; margin-top:12px; text-align:center; color: var(--red); font-family: var(--font-mono); font-size:12px; letter-spacing:0.04em; }
+  .ip-form-error.show{ display:block; }
+  .ip-optin.hide{ display:none; }
+
+  /* ---------- book / early-access section ---------- */
+  .ip-book-cta{ margin-top:40px; }
+  .ip-book-cta .ip-cover-img-wrap{ margin-bottom:28px; }
+  .ip-release-note{ font-family: var(--font-body); font-style:italic; font-weight:400; font-size:12.5px; color: var(--text-dim); text-align:center; margin:0 0 4px; }
+  .ip-book-cta .ip-optin{ margin-top:28px; }
+  @media (min-width:640px){
+    .ip-book-cta{ display:grid; grid-template-columns: 220px 1fr; align-items:center; gap:40px; margin-top:44px; }
+    .ip-book-cta .ip-cover-img-wrap{ width:100%; max-width:220px; margin:0; }
+  }
+
+  /* ---------- hero-only: form rhythm (mobile + desktop) ----------
+     Scoped to .ip-hero-card so the final CTA — which shares .ip-book-cta/
+     .ip-optin but lives inside .ip-closing-section — is left untouched. */
+  .ip-hero-card .ip-book-cta{ margin-top:40px; }
+  .ip-hero-card .ip-book-cta .ip-optin{ margin-top:28px; }
+  .ip-hero-card .ip-body{ margin-top:16px; }
+  .ip-hero-card .ip-body p{ margin-bottom:10px; }
+  .ip-hero-card .ip-field input{ padding:14px 16px; }
+  @media (min-width:640px){
+    .ip-hero-card .ip-book-cta{ margin-top:44px; grid-template-columns: 280px 1fr; }
+    .ip-hero-card .ip-book-cta .ip-cover-img-wrap{ max-width:280px; }
+    .ip-hero-card .ip-book-cta .ip-optin{ margin-top:28px; }
+  }
+
+  /* ---------- why (editorial) ---------- */
+  .ip-highlight{
+    position:relative; margin-top:64px; padding: 36px 28px; overflow:hidden;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background: linear-gradient(rgba(244,239,230,0.035), transparent 22%), radial-gradient(circle at 90% 0, rgba(232,103,45,0.1), transparent 25%);
+  }
+  .ip-highlight > *{ position:relative; z-index:1; }
+  .ip-why-grid{ display:grid; grid-template-columns: 190px 1fr; gap: 26px; }
+  .ip-why-rail{ position: sticky; top: 90px; align-self:start; }
+  .ip-why-rail .mark-mini{
+    width:44px; height:44px; border-radius:50%; border:1px solid var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-display); font-size:16px; color: var(--accent);
+    background: rgba(232,103,45,0.06); margin-bottom:14px;
+    box-shadow: 0 0 22px rgba(232,103,45,0.28);
+  }
+  @media (max-width: 700px){ .ip-why-grid{ grid-template-columns: 1fr; } .ip-why-rail{ position:static; display:flex; align-items:center; gap:10px 12px; margin-bottom:6px; } .ip-why-rail .mark-mini{ margin-bottom:0; } }
+  /* Desktop/tablet: JL mark + "From Jonathan" sit as a compact row directly
+     above the quote (same stacked pattern as mobile) instead of a separate
+     side column, so the quote/copy get the full column width to breathe. */
+  @media (min-width: 701px){
+    .ip-why-grid{ grid-template-columns: 1fr; }
+    .ip-why-rail{ position:static; display:flex; align-items:center; gap:10px 12px; margin-bottom:24px; }
+    .ip-why-rail .mark-mini{ margin-bottom:0; }
+  }
+  .ip-pull{ font-family: var(--font-body); font-style:italic; font-weight:600; font-size: clamp(22px, 3vw, 27px); color: var(--text-bright); line-height:1.4; margin-bottom:22px; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+  /* ---------- "From Jonathan" as a premium editorial panel at desktop ----------
+     Sized to the SAME content box every other section uses (.ip-container's own
+     664px, no breakout) — this is a hierarchy/spacing upgrade, not a wider section. */
+  @media (min-width: 1040px){
+    .ip-highlight{
+      padding: 44px 40px;
+      border-radius: 20px;
+      border: 1px solid var(--line-soft);
+      box-shadow: 0 0 40px rgba(232,103,45,0.08);
+      background:
+        linear-gradient(rgba(244,239,230,0.035), transparent 22%),
+        radial-gradient(circle at 88% 0, rgba(232,103,45,0.12), transparent 30%),
+        var(--card-bg-solid);
+    }
+    .ip-pull{ font-size: 33px; line-height:1.34; margin-bottom:36px; padding-left:24px; border-left-width:4px; }
+    .ip-why-grid .ip-body p{ margin-bottom:22px; }
+    .ip-why-grid .ip-body p:last-child{
+      margin-top:22px; margin-bottom:0;
+    }
+  }
+
+  .ip-ladder{ margin: 26px 0; display:grid; gap:9px; }
+  .ip-ladder p{ font-family: var(--font-body); font-size:16px; color: var(--text-dim); margin:0; }
+  .ip-ladder strong{ font-family: var(--font-display); text-transform:uppercase; letter-spacing:0.02em; font-size:19px; font-weight:400; }
+
+  /* ---------- pill snapshot row ---------- */
+  .ip-state-row{ display:grid; grid-template-columns: repeat(3,1fr); gap:2px; background: var(--line); border:1px solid var(--line); margin-top:32px; border-radius:14px; overflow:hidden; }
+  .ip-state-cell{ background: var(--card-bg-solid); padding:26px 16px; text-align:center; }
+  .ip-state-cell .icon-wrap{ display:flex; justify-content:center; margin-bottom:14px; }
+  .ip-state-cell .state-label{
+    font-family: var(--font-mono); font-size:10.5px; letter-spacing:0.13em; text-transform:uppercase; color: var(--pill, var(--accent));
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    min-height:44px; margin-bottom:7px;
+  }
+  .ip-state-cell .pill-name{ font-family: var(--font-display); font-size:16px; text-transform:uppercase; color: var(--text-bright); margin-bottom:10px; }
+  .ip-state-cell .outcome{ font-family: var(--font-body); font-style:italic; font-weight:600; font-size:13.5px; color: var(--text-body); line-height:1.4; }
+  .ip-state-cell[data-stage="blue"]{ --pill: var(--blue); }
+  .ip-state-cell[data-stage="red"]{ --pill: var(--red); }
+  .ip-state-cell[data-stage="integrity"]{ --pill: var(--accent); }
+
+  /* ---------- crack dividers (spine motif) ---------- */
+  .ip-crack{ width:100%; display:block; margin: 8px 0 20px; opacity:0; transform: translateY(6px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .ip-crack.is-visible{ opacity:1; transform: translateY(0); }
+  .ip-crack path{ transition: filter 0.6s ease; }
+  .ip-crack.is-visible path{ animation: ip-seal-flash 1.1s ease-out 0.15s 1; }
+  @keyframes ip-seal-flash{ 0%{ filter: drop-shadow(0 0 0px currentColor); } 35%{ filter: drop-shadow(0 0 7px currentColor); } 100%{ filter: drop-shadow(0 0 0px currentColor); } }
+
+  /* ---------- journey (stage) cards ---------- */
+  .ip-journey-grid{ margin-top:8px; display:grid; gap:0; }
+  .ip-journey-card{
+    position:relative; min-height:128px; padding:26px 26px 26px 92px;
+    border:1px solid var(--pill-border, var(--line-soft)); border-radius:16px; overflow:hidden;
+    background: var(--card-bg-solid);
+    opacity:0; transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease, translate 260ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ip-journey-card.is-visible{ opacity:1; transform: translateY(0); }
+  .ip-journey-ring{ position:absolute; left:-44px; top:-44px; width:140px; height:140px; border-radius:50%; border:1px solid var(--pill, var(--accent)); opacity:0.22; box-shadow: 0 0 30px rgba(232,103,45,0.08); pointer-events:none; }
+  .ip-journey-num{ position:absolute; left:24px; top:24px; font-family: var(--font-display); font-size:38px; line-height:1; color: var(--pill, var(--accent)); }
+  .ip-journey-tag{ font-family: var(--font-mono); font-size:14px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color: var(--pill, var(--accent)); display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+  .ip-pill-icon{ flex-shrink:0; display:block; }
+  .ip-pill-icon.is-asleep{ opacity:0.5; }
+  .ip-pill-icon.is-divided{ filter: drop-shadow(0 0 5px var(--red)); }
+  .ip-pill-icon.is-whole{ filter: drop-shadow(0 0 7px var(--accent)); }
+  .ip-journey-title{ margin:0; font-family: var(--font-display); font-size:23px; line-height:1.15; text-transform:uppercase; color: var(--pill, var(--text-bright)); font-weight:400; }
+  .ip-journey-body{ margin:9px 0 0; font-family: var(--font-body); font-size:16px; line-height:1.55; color: var(--text-body); font-weight:500; max-width:460px; }
+  .ip-polarity{ display:block; font-family: var(--font-body); font-style:italic; font-weight:600; font-size:14px; color: var(--pill, var(--text-dim)); margin: 5px 0 2px; }
+  .ip-journey-card[data-stage="blue"]{ --pill: var(--blue); --pill-border: rgba(74,127,184,0.45); box-shadow: 0 0 18px rgba(74,127,184,0.14); }
+  .ip-journey-card[data-stage="red"]{ --pill: var(--red); --pill-border: rgba(216,69,61,0.65); box-shadow: 0 0 18px rgba(216,69,61,0.2); }
+  .ip-journey-card[data-stage="integrity"]{ --pill: var(--accent); --pill-border: rgba(232,103,45,0.6); box-shadow: 0 0 18px rgba(232,103,45,0.18); }
+
+  .ip-subitems{ margin-top:16px; display:grid; gap:12px; max-width:440px; }
+  .ip-subitem{ padding-left:12px; border-left:2px solid var(--pill, var(--accent)); }
+  .ip-subitem .label{ font-family: var(--font-mono); font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color: var(--pill, var(--accent)); display:block; margin-bottom:4px; }
+  .ip-subitem p{ margin:0; font-family: var(--font-body); font-size:14.5px; color: var(--text-body); }
+
+  .ip-healing-map{ list-style:none; margin-top:18px; display:grid; gap:9px; max-width:440px; }
+  .ip-healing-map li{ font-size:15px; color: var(--text-bright); padding-left:20px; position:relative; font-weight:500; }
+  .ip-healing-map li::before{ content:"\2192"; position:absolute; left:0; color: var(--accent); }
+
+  .ip-proof-card{ margin: 6px 0 20px; padding: 32px 28px; background: var(--card-bg); border:1px solid rgba(216,69,61,0.65); border-radius:16px; position:relative; overflow:hidden; box-shadow: 0 0 18px rgba(216,69,61,0.2); }
+  .ip-proof-glow{ position:absolute; right:-30px; bottom:-30px; width:150px; height:150px; border-radius:50%; background: radial-gradient(circle, rgba(216,69,61,0.16), transparent 70%); pointer-events:none; }
+  .ip-proof-eyebrow{ font-family: var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color: var(--red); margin-bottom:16px; display:block; position:relative; }
+  .ip-proof-quote{ font-family: var(--font-body); font-style:italic; font-weight:500; font-size:19px; line-height:1.55; color: var(--text-bright); position:relative; }
+  .ip-proof-attr{ margin-top:18px; font-family: var(--font-display); font-size:19px; letter-spacing: 0.06em; color: var(--text-bright); position:relative; }
+  .ip-proof-attr-sub{ margin-top:4px; font-family: var(--font-mono); font-size:11px; letter-spacing:0.08em; color: var(--text-dim); text-transform:uppercase; position:relative; }
+  .ip-proof-note{ margin-top:18px; font-family: var(--font-body); font-size:14.5px; color: var(--text-body); position:relative; }
+
+  .ip-story-card{ margin: 6px 0 20px; padding: 30px 26px; background: var(--card-bg); border:1px solid var(--pill-border, var(--line)); border-radius:16px; position:relative; overflow:hidden; }
+  .ip-story-glow{ position:absolute; right:-30px; bottom:-30px; width:150px; height:150px; border-radius:50%; background: radial-gradient(circle, var(--pill, var(--accent)), transparent 70%); opacity:0.16; pointer-events:none; }
+  .ip-story-eyebrow{ font-family: var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color: var(--pill, var(--accent)); margin-bottom:14px; display:block; position:relative; }
+  .ip-story-text{ font-family: var(--font-body); font-style:italic; font-weight:500; font-size:18px; line-height:1.6; color: var(--text-bright); position:relative; }
+  .ip-story-card[data-stage="blue"]{ --pill: var(--blue); --pill-border: rgba(74,127,184,0.45); box-shadow: 0 0 18px rgba(74,127,184,0.12); }
+  .ip-story-card[data-stage="integrity"]{ --pill: var(--accent); --pill-border: rgba(232,103,45,0.6); box-shadow: 0 0 18px rgba(232,103,45,0.16); }
+
+  /* ---------- shift progression line ---------- */
+  .ip-shift-line{ position:relative; margin-top:44px; padding-left:64px; }
+  .ip-shift-rail{
+    position:absolute; left:21px; top:6px; bottom:6px; width:2px; border-radius:2px;
+    background: linear-gradient(to bottom, var(--red) 0%, var(--red) 38%, var(--accent) 62%, var(--accent) 100%);
+    box-shadow: 0 0 12px rgba(216,69,61,0.25);
+  }
+  .ip-shift-item{
+    position:relative; padding-bottom:56px;
+    opacity:0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .ip-shift-item.is-visible{ opacity:1; transform: translateY(0); }
+  .ip-shift-item:last-child{ padding-bottom:0; }
+  .ip-shift-dot{
+    position:absolute; left:-64px; top:3px; width:20px; height:20px; border-radius:50%;
+    background: var(--bg); border:2px solid var(--shift-color); box-shadow: 0 0 0 4px var(--bg), 0 0 16px var(--shift-color);
+  }
+  .ip-shift-label{ font-family: var(--font-display); font-size: clamp(22px, 3.2vw, 28px); text-transform:uppercase; color: var(--text-bright); font-weight:400; line-height:1.05; margin-bottom:10px; }
+  .ip-shift-desc{ font-family: var(--font-body); font-size:16px; line-height:1.6; color: var(--text-body); max-width:460px; }
+  .ip-shift-item[data-n="1"], .ip-shift-item[data-n="2"]{ --shift-color: var(--red); }
+  .ip-shift-item[data-n="3"], .ip-shift-item[data-n="4"]{ --shift-color: var(--accent); }
+  @media (max-width: 480px){ .ip-shift-line{ padding-left:48px; } .ip-shift-dot{ left:-48px; width:16px; height:16px; } .ip-shift-rail{ left:17px; } }
+
+  /* ---------- author ---------- */
+  .ip-author-flex{ display:flex; gap:26px; align-items:flex-start; flex-wrap:wrap; }
+  .ip-author-text{ flex:1 1 300px; }
+  .ip-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .ip-chip{ font-family: var(--font-mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color: var(--text-bright); border:1px solid var(--line); border-radius:999px; padding:6px 12px; }
+
+  .ip-author-photo-wrap{ margin: 0 auto 24px; padding:8px; border-radius:18px; background: rgba(232,103,45,0.06); box-shadow: 0 0 30px rgba(232,103,45,0.16); }
+  .ip-author-photo-wrap img{ width:100%; height:auto; display:block; border-radius:12px; box-shadow: 0 18px 40px rgba(0,0,0,0.4); }
+
+  /* ---------- signature / footer ---------- */
+  .ip-signature-rule{ width:56px; height:3px; background: var(--accent); margin-top:72px; }
+  .ip-signature-name{ font-family: var(--font-display); font-size:26px; color: var(--text-bright); margin-top:22px; }
+
+  .ip-footer{ text-align:center; margin-top:32px; padding:0 0 28px; }
+  .ip-footer img{ width:100%; max-width:220px; opacity:0.88; }
+  .ip-footer-caption{ margin-top:18px; color: var(--text-faint); font-family: var(--font-mono); font-weight:500; font-size:11px; line-height:1.55; letter-spacing:0.1em; text-transform:uppercase; }
+
+  @media (max-width: 480px){
+    .ip-container{ max-width:480px; padding:0 18px 90px; }
+    .ip-card{ padding:22px; }
+    .ip-btn-fill{ padding:18px 24px; }
+    .ip-eyebrow{ font-size:13px; letter-spacing:0.16em; }
+    .ip-h2{ font-size:30px; margin-top:16px; }
+    .ip-h2-lg{ font-size:32px; }
+    .ip-highlight{ padding:26px 16px; }
+    .ip-hero-inner{ padding:20px 20px 0; }
+    .ip-hero-card{ padding-bottom:24px; }
+    .ip-journey-card{ padding:20px 18px 20px 66px; }
+    .ip-journey-ring{ left:-34px; top:-34px; width:110px; height:110px; }
+    .ip-journey-num{ left:18px; top:18px; font-size:29px; }
+    .ip-state-cell{ padding:18px 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<div class="ip-progress" id="scrollProgress"></div>
+<div class="ip-stickybar" id="stickybar">
+  <div class="ip-stickybar-inner">
+    <span class="mark"><svg class="ip-wordmark-icon" viewBox="0 0 24 11" width="20" height="9"><rect x="1" y="1" width="6.3" height="9" rx="3.15" fill="#4a7fb8"/><rect x="8.85" y="1" width="6.3" height="9" fill="#d8453d"/><path d="M16.7,1 L20.85,1 A4.15,4.15 0 0,1 25,5.5 A4.15,4.15 0 0,1 20.85,10 L16.7,10 Z" fill="#e8672d" transform="translate(-2,0)"/></svg>The Integrity Pill</span>
+    <a href="#getbook" class="ip-btn-mini">Early Access</a>
+  </div>
+</div>
+
+<div class="ip-page-bg">
+<div class="ip-container">
+
+<!-- HEADER -->
+<div class="ip-header" id="top">
+  <div class="ip-header-title"><svg class="ip-wordmark-icon" viewBox="0 0 24 11" width="26" height="12"><rect x="1" y="1" width="6.3" height="9" rx="3.15" fill="#4a7fb8"/><rect x="8.85" y="1" width="6.3" height="9" fill="#d8453d"/><path d="M16.7,1 L20.85,1 A4.15,4.15 0 0,1 25,5.5 A4.15,4.15 0 0,1 20.85,10 L16.7,10 Z" fill="#e8672d" transform="translate(-2,0)"/></svg>The Integrity Pill</div>
+  <div class="ip-badge">FREE 30-PAGE BOOK</div>
+</div>
+
+<!-- HERO -->
+<div class="ip-hero-card">
+  <div class="ip-hero-fx">
+    <div class="ip-hero-glow"></div>
+  </div>
+  <div class="ip-hero-inner">
+    <svg class="ip-journey-pill" viewBox="0 0 200 30" preserveAspectRatio="xMidYMid meet">
+      <rect x="1" y="1" width="198" height="28" rx="14" fill="none" stroke="rgba(244,239,230,0.14)" stroke-width="1.5"/>
+      <path d="M1,15 A14,14 0 0,1 15,1 L66,1 L66,29 L15,29 A14,14 0 0,1 1,15 Z" fill="#4a7fb8"/>
+      <rect x="66" y="1" width="66" height="28" fill="#d8453d"/>
+      <path d="M132,1 L185,1 A14,14 0 0,1 199,15 A14,14 0 0,1 185,29 L132,29 Z" fill="#e8672d"/>
+    </svg>
+    <div class="ip-eyebrow" style="margin-bottom:10px;">A LETTER TO THE RED PILL MAN</div>
+    <div class="ip-hero-headline">
+      <span class="ip-line-small" style="color:#d8453d;">RED PILL GOT YOU ATTRACTION.</span>
+      <span style="color:#f4efe6;">THIS GETS YOU HER</span>
+      <span style="color:#e8672d;">TRUST AND DEVOTION.</span>
+    </div>
+    <div class="ip-body" style="color:#f4efe6;">
+      <p>The Red Pill gave you something. Maybe it gave you <strong>real skill, attention, and wins.</strong> Maybe it gave you answers when nothing else did. Maybe you got what you came looking for and <strong>still felt something was missing.</strong></p>
+      <p><strong>Then you hit a wall nobody warned you about.</strong></p>
+      <p>This book names that wall and shows you <strong>how to attract and build the relationship you actually desire.</strong></p>
+    </div>
+
+    <div class="ip-stat-row">
+      <div class="ip-stat"><div class="ip-stat-num">30</div><div class="ip-stat-label">Pages</div></div>
+      <div class="ip-stat"><div class="ip-stat-num">3</div><div class="ip-stat-label">Pills</div></div>
+      <div class="ip-stat"><div class="ip-stat-num">1</div><div class="ip-stat-label">Answer</div></div>
+    </div>
+
+    <div class="ip-book-cta">
+      <div class="ip-cover-img-wrap">
+        <img class="ip-cover-img" alt="The Integrity Pill book cover, by Jonathan Livingston" src="assets/book-cover.png">
+      </div>
+      <div class="ip-book-cta-content">
+        <p class="ip-release-note">The Integrity Pill releases September 2026.</p>
+        <form class="ip-optin" id="heroForm" data-form>
+          <div class="ip-field"><input type="text" id="hf-name" placeholder=" " required name="firstname"><label for="hf-name">First name</label></div>
+          <div class="ip-field"><input type="email" id="hf-email" placeholder=" " required name="email"><label for="hf-email">Email</label></div>
+          <button type="submit" class="ip-btn-fill">GET EARLY ACCESS</button>
+        </form>
+        <div class="ip-form-success" id="heroSuccess">You're on the list. We'll email you the moment early access opens.</div>
+        <div class="ip-form-error" id="heroError">Something went wrong. Please try again.</div>
+        <p class="ip-microcopy" style="margin-top:24px;">Free. No noise. Just what's worth your attention.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHY (editorial two-column, brand fonts) -->
+<div class="ip-highlight">
+  <div class="ip-why-grid">
+    <div class="ip-why-rail">
+      <div class="mark-mini">JL</div>
+      <span class="ip-eyebrow" style="margin-bottom:0;">From Jonathan</span>
+    </div>
+    <div>
+      <p class="ip-pull">I got good at the game before I got good at love.</p>
+      <div class="ip-body" style="margin-top:0;">
+        <p>I have a psychology degree. I graduated top of my class. <strong>None of it stopped me from optimizing for attraction and novelty over genuine connection for years.</strong></p>
+        <p>Five months in the Peruvian mountains showed me a ceiling I hadn't known was there.</p>
+        <p><strong>This book is what's on the other side of it.</strong> What the red pill was always missing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INSIDE THE BOOK -->
+<div style="margin-top:64px;">
+  <div class="ip-eyebrow">INSIDE THE BOOK</div>
+  <div class="ip-h2 ip-h2-lg">THREE PILLS.<br>ONLY ONE LEAVES A MAN<br><span class="alt">WHOLE AND UNDIVIDED.</span></div>
+
+  <div class="ip-ladder">
+    <p>The blue pill says <strong style="color:#4a7fb8;">stay asleep.</strong></p>
+    <p>The red pill says <strong style="color:#d8453d;">wake up.</strong></p>
+    <p>The integrity pill says <strong style="color:#e8672d;">become whole.</strong></p>
+  </div>
+  <p class="ip-body" style="margin-top:0;"><strong>Not a return to naivety. Not a denial of what red pill got right. The next stage beyond it.</strong></p>
+
+  <div class="ip-state-row">
+    <div class="ip-state-cell" data-stage="blue">
+      <div class="icon-wrap"><svg class="ip-pill-icon is-asleep" viewBox="0 0 24 11" width="40" height="18"><rect x="1" y="1" width="22" height="9" rx="4.5" fill="#4a7fb8"/></svg></div>
+      <span class="state-label">Asleep</span>
+      <div class="pill-name">Blue Pill</div>
+      <span class="outcome">Trust, without attraction or devotion.</span>
+    </div>
+    <div class="ip-state-cell" data-stage="red">
+      <div class="icon-wrap"><svg class="ip-pill-icon is-divided" viewBox="0 0 24 11" width="40" height="18"><path d="M1,5.5 A4.5,4.5 0 0,1 5.5,1 L9.5,1 L9.5,10 L5.5,10 A4.5,4.5 0 0,1 1,5.5 Z" fill="#d8453d"/><path d="M14.5,1 L18.5,1 A4.5,4.5 0 0,1 23,5.5 A4.5,4.5 0 0,1 18.5,10 L14.5,10 Z" fill="#d8453d"/></svg></div>
+      <span class="state-label">Awake, But Divided</span>
+      <div class="pill-name">Red Pill</div>
+      <span class="outcome">Attraction, without trust or devotion.</span>
+    </div>
+    <div class="ip-state-cell" data-stage="integrity">
+      <div class="icon-wrap"><svg class="ip-pill-icon is-whole" viewBox="0 0 24 11" width="40" height="18"><rect x="1" y="1" width="22" height="9" rx="4.5" fill="#e8672d"/></svg></div>
+      <span class="state-label">Whole, Undivided</span>
+      <div class="pill-name">Integrity Pill</div>
+      <span class="outcome">Attraction, trust, and devotion.</span>
+    </div>
+  </div>
+
+  <div class="ip-body" style="margin-top:32px;"><p>Wound, escape, mask. You've never had to look any of them in the eye long enough for anything to change. All you feel is that something's off, or missing, even when everything looks like it's working. That's the ceiling. <strong>Integrity heals all three, all the way back to the root.</strong></p></div>
+</div>
+
+<!-- JOURNEY / STAGES with crack dividers (spine motif) -->
+<div class="ip-journey-grid">
+
+  <svg class="ip-crack" data-color="blue" viewBox="0 0 400 20" preserveAspectRatio="none" height="20">
+    <path d="M0,10 20,2 40,18 60,3 80,17 100,4 120,16 140,2 160,18 180,4 200,16 220,3 240,17 260,4 280,16 300,2 320,18 340,4 360,16 380,2 400,10" fill="none" stroke="#4a7fb8" stroke-width="1.6"/>
+  </svg>
+
+  <div class="ip-journey-card" data-stage="blue">
+    <div class="ip-journey-ring"></div>
+    <div class="ip-journey-num">01</div>
+    <span class="ip-journey-tag"><svg class="ip-pill-icon is-asleep" viewBox="0 0 24 11" width="22" height="10"><rect x="1" y="1" width="22" height="9" rx="4.5" fill="#4a7fb8"/></svg>Blue Pill</span>
+    <h3 class="ip-journey-title">The Wound &amp; The Escape</h3>
+    <span class="ip-polarity">All heart, no beast.</span>
+    <p class="ip-journey-body">This is where the story begins. You learned to hide the parts of yourself that felt too vulnerable to be seen. You buried the pain or numbed it through escape. You learned to be who you thought you needed to be to be accepted. None of it was healing.</p>
+    <div class="ip-subitems">
+      <div class="ip-subitem"><span class="label">The Wound</span><p>One moment, or a hundred small ones. The belief it left behind: you weren't enough, and you weren't lovable.</p></div>
+      <div class="ip-subitem"><span class="label">The Escape</span><p>Video games. Porn. The numbing you built so you'd never have to feel that wound again.</p></div>
+    </div>
+  </div>
+
+  <div class="ip-story-card" data-stage="blue">
+    <div class="ip-story-glow"></div>
+    <span class="ip-story-eyebrow">This Is The Wound</span>
+    <p class="ip-story-text">A girl I was convinced was out of my league chose me when I was young. I was so nervous that my palm would sweat every time I held her hand. When she left me for someone else, I found the heart-shaped mirror I'd given her for Valentine's Day sitting in the garbage.</p>
+  </div>
+
+  <svg class="ip-crack" data-color="red" viewBox="0 0 400 20" preserveAspectRatio="none" height="20">
+    <path d="M0,10 18,15 36,4 54,17 72,6 90,16 108,3 126,18 144,5 162,15 180,4 198,17 216,6 234,16 252,3 270,18 288,5 306,15 324,4 342,17 360,6 378,16 400,10" fill="none" stroke="#d8453d" stroke-width="1.8"/>
+  </svg>
+
+  <div class="ip-journey-card" data-stage="red">
+    <div class="ip-journey-ring"></div>
+    <div class="ip-journey-num">02</div>
+    <span class="ip-journey-tag"><svg class="ip-pill-icon is-divided" viewBox="0 0 24 11" width="22" height="10"><path d="M1,5.5 A4.5,4.5 0 0,1 5.5,1 L9.5,1 L9.5,10 L5.5,10 A4.5,4.5 0 0,1 1,5.5 Z" fill="#d8453d"/><path d="M14.5,1 L18.5,1 A4.5,4.5 0 0,1 23,5.5 A4.5,4.5 0 0,1 18.5,10 L14.5,10 Z" fill="#d8453d"/></svg>Red Pill</span>
+    <h3 class="ip-journey-title">The Mask</h3>
+    <span class="ip-polarity">All beast, no heart.</span>
+    <p class="ip-journey-body">The wound didn't disappear. It crystallized into a belief designed to keep you from ever feeling that pain again: control the outcome, stay ahead, never let her see how much you need her. Never be that vulnerable again.</p>
+    <p class="ip-journey-body" style="margin-top:16px;">The Red Pill gave that belief a strategy. Build the body, status, game, emotional control. It taught men to adopt the behaviors of men naturally at ease with women. For some men, it worked. The results were real.</p>
+    <p class="ip-journey-body" style="margin-top:16px;">But learning the behaviors of a secure man isn't the same as becoming one from the inside out. You can master the expression without transforming the identity underneath it.</p>
+    <p class="ip-journey-body" style="margin-top:16px;">The wound became a worldview. The worldview became a strategy. The strategy became an identity. And eventually, the man can't tell where the strategy ends and he begins.</p>
+    <div class="ip-subitems">
+      <div class="ip-subitem"><span class="label">The Mask</span><p>The armor you built to protect yourself from the wound, until you lose touch with who you are underneath it.</p></div>
+    </div>
+  </div>
+
+  <div class="ip-proof-card">
+    <div class="ip-proof-glow"></div>
+    <span class="ip-proof-eyebrow">The Most Honest Thing I Ever Heard</span>
+    <p class="ip-proof-quote">"I've slept with 500 women. If you think sleeping with tons of beautiful women is going to make you happy, think again, because I'm still miserable."</p>
+    <div class="ip-proof-attr">SINN</div>
+    <div class="ip-proof-attr-sub">#2 Ranked Pickup Artist In The World</div>
+    <p class="ip-proof-note">I heard him say that myself as he opened his own seduction bootcamp. He had mastered the game and was still miserable.</p>
+    <div style="width:40px; height:1px; background: var(--red); margin:20px 0; position:relative;"></div>
+    <p class="ip-proof-note" style="margin-top:0;">Neil Strauss, author of <em>The Game</em>, eventually came to the same conclusion:</p>
+    <p class="ip-proof-quote" style="margin-top:6px; font-size:17px;">&ldquo;To win the game was to leave it.&rdquo;</p>
+  </div>
+
+  <svg class="ip-crack" data-color="red" viewBox="0 0 400 20" preserveAspectRatio="none" height="20">
+    <path d="M0,10 400,10" fill="none" stroke="#d8453d" stroke-width="1.6"/>
+  </svg>
+  <div class="ip-transition"><p>Waking up was necessary.<br> Getting stuck here isn't.</p></div>
+  <svg class="ip-crack" data-color="integrity" viewBox="0 0 400 20" preserveAspectRatio="none" height="20">
+    <path d="M0,10 400,10" fill="none" stroke="#e8672d" stroke-width="2.2"/>
+  </svg>
+
+  <div class="ip-journey-card" data-stage="integrity">
+    <div class="ip-journey-ring"></div>
+    <div class="ip-journey-num">03</div>
+    <span class="ip-journey-tag"><svg class="ip-pill-icon is-whole" viewBox="0 0 24 11" width="22" height="10"><rect x="1" y="1" width="22" height="9" rx="4.5" fill="#e8672d"/></svg>Integrity Pill</span>
+    <h3 class="ip-journey-title">The Return To Wholeness</h3>
+    <span class="ip-polarity">100% Beast. 100% Heart.</span>
+    <p class="ip-journey-body">What heals the other three, all the way back to the root, and the only thing that gets you a relationship that lasts, because it actually thrives.</p>
+    <ul class="ip-healing-map">
+      <li>The wound gets healed, not just buried</li>
+      <li>The escape gets replaced, not just indulged</li>
+      <li>The mask comes off, not perfected</li>
+    </ul>
+  </div>
+
+  <div class="ip-story-card" data-stage="integrity">
+    <div class="ip-story-glow"></div>
+    <span class="ip-story-eyebrow">No More Performing</span>
+    <p class="ip-story-text">I watched the woman I love make tea on a balcony in Turkey, the morning warm with the Mediterranean sun. No mask. No game. Just me, and she loved me in all of it.</p>
+  </div>
+
+  <svg class="ip-crack" data-color="integrity" viewBox="0 0 400 20" preserveAspectRatio="none" height="20">
+    <path d="M0,10 400,10" fill="none" stroke="#e8672d" stroke-width="2.4"/>
+  </svg>
+
+</div>
+
+<!-- WHAT CHANGES -->
+<div style="margin-top:44px;">
+  <div class="ip-eyebrow">WHAT YOU WALK AWAY WITH</div>
+  <div class="ip-h2 ip-h2-lg">WHAT CHANGES <br><span class="alt">WHEN YOU READ IT.</span></div>
+</div>
+
+<div class="ip-shift-line">
+  <div class="ip-shift-rail"></div>
+
+  <div class="ip-shift-item" data-n="1">
+    <div class="ip-shift-dot"></div>
+    <h3 class="ip-shift-label">The Ceiling</h3>
+    <p class="ip-shift-desc">See exactly where your frame hits its limit, and why it's there.</p>
+  </div>
+
+  <div class="ip-shift-item" data-n="2">
+    <div class="ip-shift-dot"></div>
+    <h3 class="ip-shift-label">The Blind Spot</h3>
+    <p class="ip-shift-desc">Understand the one thing red pill was never built to teach you.</p>
+  </div>
+
+  <div class="ip-shift-item" data-n="3">
+    <div class="ip-shift-dot"></div>
+    <h3 class="ip-shift-label">The Root</h3>
+    <p class="ip-shift-desc">See how integrity heals the wound, ends the escape, and removes the mask.</p>
+  </div>
+
+  <div class="ip-shift-item" data-n="4">
+    <div class="ip-shift-dot"></div>
+    <h3 class="ip-shift-label">The Practice</h3>
+    <p class="ip-shift-desc">Get the Integrity Practice that turns attraction into trust and devotion that actually lasts.</p>
+  </div>
+</div>
+
+<!-- AUTHOR -->
+<div style="margin-top:64px;">
+  <div class="ip-eyebrow">THE AUTHOR</div>
+</div>
+<div class="ip-card" style="margin-top:24px;">
+  <div class="ip-author-photo-wrap">
+    <img src="assets/author-photo.jpg" alt="Jonathan Livingston, founder of Men Built For More">
+  </div>
+  <div class="ip-author-flex">
+    <div class="ip-author-text" style="flex:1 1 100%;">
+      <div class="ip-body" style="margin-top:0;">
+        <p>Jonathan Livingston founded Men Built For More to give other men what he had to build for himself. Not a stronger frame. A way back to integrity.</p>
+        <p>He spent nearly a year immersed in the seduction community, in person, and years more consuming its content. Then came more than a decade of unlearning what none of it could teach him. He doesn't teach from theory. He teaches from what it actually took to break through the red pill ceiling.</p>
+      </div>
+      <div class="ip-chips">
+        <span class="ip-chip">Psychology Degree, Top of Class</span>
+        <span class="ip-chip">10,000 Hours of Meditation</span>
+        <span class="ip-chip">Hundreds of Men Coached</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="ip-closing-section" id="getbook">
+  <div class="ip-closing-fx">
+    <div class="ip-closing-base"></div>
+    <div class="ip-closing-glow"></div>
+  </div>
+  <div class="ip-closing-inner">
+    <div class="ip-eyebrow">THE NEXT STAGE</div>
+    <div class="ip-h2 ip-h2-lg ip-h2-closing" style="color:#e8672d;">TAKE THE INTEGRITY PILL.</div>
+    <div class="ip-body" style="color:#f4efe6;"><p><span style="color:#d8453d;">The Red Pill</span> woke you up.</p><p><strong><span style="color:#e8672d;">The Integrity Pill</span> is the next stage of development.</strong></p><p>Beyond the strategies. Beyond the masks. Beyond the escapes. <strong>Become whole and undivided.</strong></p><p><strong>Get the trust and devotion you've always wanted.</strong></p></div>
+
+    <div class="ip-book-cta ip-closing-book-cta">
+      <div class="ip-closing-cover-wrap">
+        <img class="ip-closing-cover" src="assets/book-cover.png" alt="The Integrity Pill book cover, by Jonathan Livingston">
+      </div>
+      <div class="ip-book-cta-content">
+        <p class="ip-release-note">The Integrity Pill releases September 2026.</p>
+        <form class="ip-optin" id="finalForm" data-form>
+          <div class="ip-field"><input type="text" id="ff-name" placeholder=" " required name="firstname"><label for="ff-name">First name</label></div>
+          <div class="ip-field"><input type="email" id="ff-email" placeholder=" " required name="email"><label for="ff-email">Email</label></div>
+          <button type="submit" class="ip-btn-fill">GET EARLY ACCESS</button>
+        </form>
+        <div class="ip-form-success" id="finalSuccess">You're on the list. We'll email you the moment early access opens.</div>
+        <div class="ip-form-error" id="finalError">Something went wrong. Please try again.</div>
+        <p class="ip-microcopy" style="margin-top:28px;">Free. No noise. Just what's worth your attention.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ip-signature-rule"></div>
+<div class="ip-signature-name">JONATHAN LIVINGSTON</div>
+
+<!-- Footer -->
+<div class="ip-footer">
+  <img src="assets/footer-logo.png" alt="Men Built For More">
+  <div class="ip-footer-caption">MEN BUILT FOR MORE &middot; THE INTEGRITY PILL<br><span style="display:inline-block; margin-top:8px;">100% BEAST. 100% HEART.</span></div>
+</div>
+
+</div>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('scrollProgress').style.width = scrolled + '%';
+  });
+
+  const stickybar = document.getElementById('stickybar');
+  const topEl = document.getElementById('top');
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { stickybar.classList.toggle('show', !e.isIntersecting); });
+  }, { threshold: 0, rootMargin: '-40px 0px 0px 0px' });
+  navObs.observe(topEl);
+
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.ip-journey-card, .ip-crack, .ip-shift-item').forEach(el => revealObs.observe(el));
+
+  // TODO: point this at the real opt-in endpoint (ESP form action, e.g. ConvertKit/Mailchimp/Beehiiv,
+  // or a serverless function). Until then submissions are not stored anywhere.
+  const OPTIN_ENDPOINT = '';
+
+  async function handleOptin(formEl, successEl, errorEl){
+    formEl.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      errorEl.classList.remove('show');
+      const data = new FormData(formEl);
+      const entry = { firstname: data.get('firstname'), email: data.get('email'), ts: new Date().toISOString() };
+
+      if (!OPTIN_ENDPOINT) {
+        formEl.classList.add('hide');
+        successEl.classList.add('show');
+        return;
+      }
+
+      const submitBtn = formEl.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch(OPTIN_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry)
+        });
+        if (!res.ok) throw new Error('Request failed');
+        formEl.classList.add('hide');
+        successEl.classList.add('show');
+      } catch (err) {
+        console.error('Opt-in submission error:', err);
+        errorEl.classList.add('show');
+        submitBtn.disabled = false;
+      }
+    });
+  }
+  handleOptin(document.getElementById('heroForm'), document.getElementById('heroSuccess'), document.getElementById('heroError'));
+  handleOptin(document.getElementById('finalForm'), document.getElementById('finalSuccess'), document.getElementById('finalError'));
+
+  // Touch-equivalent of the hover lift: press while touching, release cleanly,
+  // and bail out if the touch turns into a scroll or started on an interactive control.
+  function wireTouchLift(elements){
+    const MOVE_CANCEL_PX = 10;
+    let active = null;
+    let startX = 0, startY = 0;
+
+    elements.forEach(el => {
+      el.addEventListener('touchstart', (e) => {
+        if (e.target.closest('a, button, input, textarea, label')) return;
+        active = el;
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY;
+        el.classList.add('is-pressed');
+      }, { passive: true });
+
+      el.addEventListener('touchmove', (e) => {
+        if (active !== el) return;
+        const t = e.touches[0];
+        if (Math.abs(t.clientX - startX) > MOVE_CANCEL_PX || Math.abs(t.clientY - startY) > MOVE_CANCEL_PX) {
+          el.classList.remove('is-pressed');
+          active = null;
+        }
+      }, { passive: true });
+
+      el.addEventListener('touchend', () => {
+        el.classList.remove('is-pressed');
+        if (active === el) active = null;
+      });
+
+      el.addEventListener('touchcancel', () => {
+        el.classList.remove('is-pressed');
+        if (active === el) active = null;
+      });
+    });
+  }
+
+  wireTouchLift(document.querySelectorAll('.ip-card, .ip-journey-card, .ip-story-card, .ip-proof-card, .ip-state-cell'));
+  wireTouchLift(document.querySelectorAll('.ip-closing-cover-wrap'));
+</script>
+
+</body>
+</html>
